@@ -12,29 +12,29 @@ public class AutoFishingClient implements ClientModInitializer {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 	}
 
-	private static int jogaVara = -1;
+	private static int rodCastDelay = -1;
 
 	/*
 	Conta ticks de forma regressiva para dar um tempo até usar o item novamente.
 	Esse código funciona mas está muito feio e com repetições, será necessário corrigir
 	posteriormente.
 	*/
-	public void tick(MinecraftClient cliente){
-		if(jogaVara > 0){
-			jogaVara--;
+	public void tick(MinecraftClient client){
+		if(rodCastDelay > 0){
+			rodCastDelay--;
 		}
-		if(jogaVara == 0){
+		if(rodCastDelay == 0){
 			try {
-				assert cliente.interactionManager != null;
-				cliente.interactionManager.interactItem(cliente.player, Hand.MAIN_HAND);
-				jogaVara = -1;
+				assert client.interactionManager != null;
+				client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
+				rodCastDelay = -1;
 			} catch (NullPointerException e){
 				AutoFishing.LOGGER.info("\uD83C\uDFA3❌ Não foi possível pegar o peixe automaticamente");
 			}
 		}
 	}
 
-	public static void setJogaVara(int contagem){
-		jogaVara = contagem;
+	public static void setRodCastDelay(int delayTicks){
+		rodCastDelay = delayTicks;
 	}
 }

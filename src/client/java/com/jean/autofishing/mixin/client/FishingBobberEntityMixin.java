@@ -24,13 +24,13 @@ public abstract class FishingBobberEntityMixin {
 	public void onTrackedDataSet(TrackedData<?> data, CallbackInfo info){
 		AutoFishing.LOGGER.info("Fisgado: {}", caughtFish);
 
-		MinecraftClient cliente = MinecraftClient.getInstance();
+		MinecraftClient client = MinecraftClient.getInstance();
 
 		if(caughtFish){
 			try {
-				assert cliente.interactionManager != null;
-				cliente.interactionManager.interactItem(cliente.player, Hand.MAIN_HAND);
-				AutoFishingClient.setJogaVara(20);
+				assert client.interactionManager != null;
+				client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
+				AutoFishingClient.setRodCastDelay(20);
 			} catch (NullPointerException e){
 				AutoFishing.LOGGER.info("\uD83C\uDFA3❌ Não foi possível pegar o peixe automaticamente");
 			}
