@@ -1,10 +1,9 @@
 package com.jean.autofishing.mixin.client;
 
-import com.jean.autofishing.AutoFishing;
-import com.jean.autofishing.AutoFishingClient;
+
+import com.jean.autofishing.RodInteractor;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.data.TrackedData;
-import net.minecraft.util.Hand;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,19 +21,10 @@ public abstract class FishingBobberEntityMixin {
 
 	@Inject(at = @At("TAIL"), method = "onTrackedDataSet")
 	public void onTrackedDataSet(TrackedData<?> data, CallbackInfo info){
-		AutoFishing.LOGGER.info("Fisgado: {}", caughtFish);
-
-		MinecraftClient client = MinecraftClient.getInstance();
-
 		if(caughtFish){
-			try {
-				assert client.interactionManager != null;
-				client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
-				AutoFishingClient.setRodCastDelay(20);
-			} catch (NullPointerException e){
-				AutoFishing.LOGGER.info("\uD83C\uDFA3❌ Não foi possível pegar o peixe automaticamente");
-			}
-
+			MinecraftClient client = MinecraftClient.getInstance();
+			RodInteractor.castRod(client);
+			RodInteractor.castScheduler(20);
 		}
 	}
 }
