@@ -3,7 +3,7 @@
 	"package": "com.jean.autofishing.mixin.client",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
-		"ExampleClientMixin"
+      "FishingBobberEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
