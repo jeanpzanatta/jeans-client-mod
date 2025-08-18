@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "com.jeans.fishing.mixin",
+	"package": "com.jeans.mods.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
 		"client.FishingBobberEntityMixin"

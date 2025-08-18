@@ -1,4 +1,4 @@
-package com.jeans.fishing;
+package com.jeans.mods;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -18,7 +18,7 @@ public class JeansClient implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-
+		LOGGER.info("Modificações do cliente de Jean foram iniciadas.");
 		LOGGER.info("\uD83C\uDFA3 - Mod de pesca automática iniciado! ");
 	}
 

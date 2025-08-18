@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.jeans.fishing.JeansClient"
+			"com.jeans.mods.JeansClient"
 		],
 		"client": [
-			"com.jeans.fishing.AutoFishingClient"
+			"com.jeans.mods.features.JeansInitializer"
 		]
 	},
 

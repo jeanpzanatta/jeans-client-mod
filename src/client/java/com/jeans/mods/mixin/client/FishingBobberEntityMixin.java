@@ -1,7 +1,7 @@
-package com.jeans.fishing.mixin.client;
+package com.jeans.mods.mixin.client;
 
 
-import com.jeans.fishing.RodInteractor;
+import com.jeans.mods.features.fishing.RodInteractor;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.data.TrackedData;
 import org.spongepowered.asm.mixin.Mixin;

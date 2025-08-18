@@ -1,5 +1,6 @@
-package com.jeans.fishing;
+package com.jeans.mods.features.fishing;
 
+import com.jeans.mods.JeansClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Hand;
 
@@ -17,7 +18,7 @@ public class RodInteractor {
     }
 
     public static void castScheduler(int delayTicks){
-        TickHandler.scheduleRodCast(delayTicks);
+        AutoFishing.scheduleRodCast(delayTicks);
     }
 
 
