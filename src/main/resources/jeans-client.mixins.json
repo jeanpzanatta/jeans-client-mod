@@ -1,6 +1,6 @@
 {
-	"required": true,
-	"package": "com.jean.autofishing.mixin",
+	"required": false,
+	"package": "",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 	],

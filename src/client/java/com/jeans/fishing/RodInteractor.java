@@ -1,4 +1,4 @@
-package com.jean.autofishing;
+package com.jeans.fishing;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Hand;
@@ -10,9 +10,9 @@ public class RodInteractor {
         // Achhei melhor testar a condição do player ser nula no "if" em fez de ficar jogando um monte de Try Catch.
         if (client != null && client.player != null && client.interactionManager != null) {
             client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
-            AutoFishing.LOGGER.info("🎣 Usou a vara de pesca");
+            JeansClient.LOGGER.info("🎣 Usou a vara de pesca");
         } else {
-            AutoFishing.LOGGER.warn("🎣❌ Não foi possível usar a vara.");
+            JeansClient.LOGGER.warn("🎣❌ Não foi possível usar a vara.");
         }
     }
 

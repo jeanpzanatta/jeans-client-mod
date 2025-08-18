@@ -1,4 +1,4 @@
-package com.jean.autofishing;
+package com.jeans.fishing;
 
 import net.minecraft.client.MinecraftClient;
 
