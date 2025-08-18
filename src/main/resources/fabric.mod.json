@@ -19,7 +19,7 @@
 			"com.jeans.mods.JeansClient"
 		],
 		"client": [
-			"com.jeans.mods.features.JeansInitializer"
+			"com.jeans.mods.features.TickManager"
 		]
 	},
 

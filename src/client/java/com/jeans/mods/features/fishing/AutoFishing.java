@@ -1,8 +1,6 @@
 package com.jeans.mods.features.fishing;
 
 import com.jeans.mods.features.TickableFeature;
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 
 public class AutoFishing implements TickableFeature {
