@@ -1,6 +1,9 @@
 package com.jeans.mods.features.screen;
 
 
+import com.jeans.mods.features.fishing.AutoFishing;
+import com.jeans.mods.features.fishing.RodInteractor;
+import com.jeans.mods.features.flying.Flying;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -19,14 +22,16 @@ public class JeansClientScreen extends Screen {
         int centerX = this.width/2;
         int centerY = this.height/2;
 
+        // Precisa ioncluir feedback do botão com o status ligado/desligado do feature.
+
         // Primeiro botão da tela:
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Auto Fishing"), button -> {
-            // Incluir as funções do botão
+            RodInteractor.togleAutoFishing();
         }).dimensions(centerX - 100, centerY - 30, 200, 20).build());
 
         // Segundo botão da tela:
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Flying"), button -> {
-            // Incluir as funções do botão
+            Flying.togleFlying();
         }).dimensions(centerX - 100, centerY, 200, 20).build());
 
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Back"), button -> {
