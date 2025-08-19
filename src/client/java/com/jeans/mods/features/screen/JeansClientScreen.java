@@ -24,13 +24,15 @@ public class JeansClientScreen extends Screen {
         // Precisa ioncluir feedback do botão com o status ligado/desligado do feature.
 
         // Primeiro botão da tela:
-        this.addDrawableChild(ButtonWidget.builder(Text.literal("Auto Fishing"), button -> {
+        this.addDrawableChild(ButtonWidget.builder(Text.literal(RodInteractor.getButtonText()), button -> {
             RodInteractor.toggleAutoFishing();
+            button.setMessage(Text.literal(RodInteractor.getButtonText()));
         }).dimensions(centerX - 100, centerY - 30, 200, 20).build());
 
         // Segundo botão da tela:
-        this.addDrawableChild(ButtonWidget.builder(Text.literal("Flying"), button -> {
+        this.addDrawableChild(ButtonWidget.builder(Text.literal(Flying.getButtonText()), button -> {
             Flying.toggleFlying();
+            button.setMessage(Text.literal(Flying.getButtonText()));
         }).dimensions(centerX - 100, centerY, 200, 20).build());
 
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Back"), button -> {

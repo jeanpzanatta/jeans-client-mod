@@ -6,7 +6,7 @@ import net.minecraft.util.Hand;
 public class RodInteractor {
     //Classe focada e utilizar a vara na main hand do personagem assim que um item for pescado.
 
-    // Não sei mais por que fiz duas classes para isso, vou juntar tudo depois, por enquanto funciona.
+    // Fiz em duas classes separadas para não ter que repetir a lógica de usar o item na classe principal e no Mixin.
     private static boolean isAutoFishingEnable = true;
 
     public static void castRod(MinecraftClient client) {
@@ -25,4 +25,8 @@ public class RodInteractor {
     }
 
 
+    public static String getButtonText() {
+        if (isAutoFishingEnable) return "AutoFishing: ON";
+        return "AutoFishing OFF";
+    }
 }

@@ -21,4 +21,10 @@ public class Flying  implements TickableFeature {
     public static void toggleFlying(){
         isFlyingEnable = !isFlyingEnable;
     }
+
+    public static String getButtonText(){
+        if (isFlyingEnable) return "Flying ON";
+        return "Flying OFF";
+    }
+
 }
