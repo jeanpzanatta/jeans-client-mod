@@ -3,6 +3,7 @@ package com.jeans.mods.features.flying;
 import com.jeans.mods.features.TickableFeature;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3d;
 
 public class Flying  implements TickableFeature {
@@ -18,13 +19,12 @@ public class Flying  implements TickableFeature {
         }
     }
 
-    public static void toggleFlying(){
+    public static void toggle(){
         isFlyingEnable = !isFlyingEnable;
     }
 
-    public static String getButtonText(){
-        if (isFlyingEnable) return "Flying ON";
-        return "Flying OFF";
+    public static Text getButtonText(){
+        return Text.literal(isFlyingEnable ? "Flying: ON": "Flying: OFF");
     }
 
 }

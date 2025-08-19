@@ -17,6 +17,8 @@ o métod é chamado quando o peixe é fisgado, não em tod tick.
 */
 @Mixin(net.minecraft.entity.projectile.FishingBobberEntity.class)
 public abstract class FishingBobberEntityMixin {
+	private int DELAY_TICKS = 20; // Tempo de espera em ticks para usar novamente a vara 1s parece bom.
+
 	@Shadow private boolean caughtFish;
 
 	@Inject(at = @At("TAIL"), method = "onTrackedDataSet")
@@ -24,7 +26,7 @@ public abstract class FishingBobberEntityMixin {
 		if(caughtFish){
 			MinecraftClient client = MinecraftClient.getInstance();
 			RodInteractor.castRod(client);
-			RodInteractor.castScheduler(20);
+			RodInteractor.castScheduler(DELAY_TICKS);
 		}
 	}
 }

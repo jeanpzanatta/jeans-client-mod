@@ -1,6 +1,7 @@
 package com.jeans.mods.features.fishing;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 
 public class RodInteractor {
@@ -20,13 +21,11 @@ public class RodInteractor {
         AutoFishing.scheduleRodCast(delayTicks);
     }
 
-    public static void toggleAutoFishing(){
+    public static void toggle(){
         isAutoFishingEnable = !isAutoFishingEnable;
     }
 
-
-    public static String getButtonText() {
-        if (isAutoFishingEnable) return "AutoFishing: ON";
-        return "AutoFishing OFF";
+    public static Text getButtonText() {
+        return Text.literal(isAutoFishingEnable ? "AutoFishing: ON" : "AutoFishing: OFF");
     }
 }
