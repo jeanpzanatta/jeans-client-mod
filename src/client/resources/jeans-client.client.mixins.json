@@ -1,15 +1,16 @@
 {
   "required": true,
-  "package": "com.jeans.mods.mixin",
+  "package": "com.jeans.mods.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "client.FishingBobberEntityMixin",
-    "client.GameMenuScreenMixin"
+    "FishingBobberEntityMixin",
+    "GameMenuScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
-    "client.FishingBobberEntityMixin"
-	]
+    "FishingBobberEntityMixin",
+    "GameMenuScreenMixin"
+  ]
 }

@@ -1,12 +1,11 @@
 package com.jeans.mods.features.fishing;
 
-import com.jeans.mods.features.TickableFeature;
 import net.minecraft.client.MinecraftClient;
 
-public class AutoFishing implements TickableFeature {
+public class AutoFishing {
 	private static int rodCastDelay = -1; //inicializa com -1 para não ter risco de usar o item de forma errada.
 
-	public void tick(MinecraftClient client){
+	public static void tick(MinecraftClient client){
 		if(rodCastDelay > 0){
 			rodCastDelay--;
 		}

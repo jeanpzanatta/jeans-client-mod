@@ -1,21 +1,33 @@
 package com.jeans.mods.features.flying;
 
-import com.jeans.mods.features.TickableFeature;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.Entity;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.Vec3d;
 
-public class Flying  implements TickableFeature {
+public class Flying {
     private static boolean isFlyingEnable = true;
+    private static int counter = 0;
 
-    @Override
-    public void tick(MinecraftClient client){
-        if(client.player != null && client.player.hasVehicle() && isFlyingEnable){
-            Entity vehicle = client.player.getVehicle();
-            Vec3d velocity = vehicle.getVelocity();
-            double motionY = client.options.jumpKey.isPressed() ? 0.5 : 0;
-            vehicle.setVelocity(new Vec3d(velocity.x, motionY, velocity.z));
+    public static void tick(MinecraftClient client){
+        if (!isFlyingEnable || client.player == null) return;
+        var p = client.player;
+        p.getAbilities().allowFlying = true;
+        spoofTinyFall(client);
+    }
+
+    /* Não estava conseguindo descobrir uma maneira de fazer o boneco voar sem o barco,
+    ** então pedi para o chat GPT gerar algo que voasse como no criativo sem barco e que
+    **  levasse uma queda a cada 40 ticks para evitar kick nos servidores Paper, e o código
+    ** sugerido a seguir funcionou, então resolvi usar até pensar em algo melhor.*/
+
+    private static void spoofTinyFall(MinecraftClient client) {
+        var p = client.player;
+        if (p == null || !p.getAbilities().flying) return; // só quando realmente voando
+
+        if (++counter >= 40) {
+            counter = 0;
+            double x = p.getX(), y = p.getY(), z = p.getZ();
+            p.setPosition(x, y - 0.4, z);
+            p.fallDistance = 0.0F; // evita dano de queda cliente-side
         }
     }
 
@@ -26,5 +38,4 @@ public class Flying  implements TickableFeature {
     public static Text getButtonText(){
         return Text.literal(isFlyingEnable ? "Flying: ON": "Flying: OFF");
     }
-
 }
