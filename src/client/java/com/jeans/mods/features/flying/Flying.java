@@ -18,7 +18,7 @@ public class Flying  implements TickableFeature {
         }
     }
 
-    public static void togleFlying(){
+    public static void toggleFlying(){
         isFlyingEnable = !isFlyingEnable;
     }
 }

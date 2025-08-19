@@ -20,7 +20,7 @@ public class RodInteractor {
         AutoFishing.scheduleRodCast(delayTicks);
     }
 
-    public static void togleAutoFishing(){
+    public static void toggleAutoFishing(){
         isAutoFishingEnable = !isAutoFishingEnable;
     }
 

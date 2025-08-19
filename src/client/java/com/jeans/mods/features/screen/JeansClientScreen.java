@@ -1,7 +1,6 @@
 package com.jeans.mods.features.screen;
 
 
-import com.jeans.mods.features.fishing.AutoFishing;
 import com.jeans.mods.features.fishing.RodInteractor;
 import com.jeans.mods.features.flying.Flying;
 import net.minecraft.client.gui.DrawContext;
@@ -26,12 +25,12 @@ public class JeansClientScreen extends Screen {
 
         // Primeiro botão da tela:
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Auto Fishing"), button -> {
-            RodInteractor.togleAutoFishing();
+            RodInteractor.toggleAutoFishing();
         }).dimensions(centerX - 100, centerY - 30, 200, 20).build());
 
         // Segundo botão da tela:
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Flying"), button -> {
-            Flying.togleFlying();
+            Flying.toggleFlying();
         }).dimensions(centerX - 100, centerY, 200, 20).build());
 
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Back"), button -> {
