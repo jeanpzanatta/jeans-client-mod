@@ -2,37 +2,43 @@ package com.jeans.mods.features.flying;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.Vec3d;
+
+import static com.mojang.text2speech.Narrator.LOGGER;
 
 public class Flying {
     private static boolean isFlyingEnable = true;
     private static int counter = 0;
+    private static double FALL_SPEED = -0.04; // Velocidade minima para o server resetar o contador.
+    private static int FLYING_TICKS = 40; // Nos meus testes o servidor aceita até 80 Ticks, usando 40 pra garantir.
 
     public static void tick(MinecraftClient client){
-        if (!isFlyingEnable || client.player == null) return;
-        var p = client.player;
-        p.getAbilities().allowFlying = true;
-        spoofTinyFall(client);
+        if (client.player == null) return;
+        var player = client.player;
+        if (isFlyingEnable) {
+            player.getAbilities().allowFlying = true;
+            spoofTinyFall(client);
+        }
+        else {
+            player.getAbilities().flying = false;
+            player.getAbilities().allowFlying = false;
+        }
     }
 
-    /* Não estava conseguindo descobrir uma maneira de fazer o boneco voar sem o barco,
-    ** então pedi para o chat GPT gerar algo que voasse como no criativo sem barco e que
-    **  levasse uma queda a cada 40 ticks para evitar kick nos servidores Paper, e o código
-    ** sugerido a seguir funcionou, então resolvi usar até pensar em algo melhor.*/
-
     private static void spoofTinyFall(MinecraftClient client) {
-        var p = client.player;
-        if (p == null || !p.getAbilities().flying) return; // só quando realmente voando
-
-        if (++counter >= 40) {
+        var player = client.player;
+        if (player == null || !player.getAbilities().flying) return; // só quando realmente voando
+        if (++counter >= FLYING_TICKS) {
+            LOGGER.info("Está chamando a queda");
             counter = 0;
-            double x = p.getX(), y = p.getY(), z = p.getZ();
-            p.setPosition(x, y - 0.4, z);
-            p.fallDistance = 0.0F; // evita dano de queda cliente-side
+            final Vec3d velocity = player.getVelocity();
+            player.setVelocity(new Vec3d(velocity.x, FALL_SPEED - velocity.y, velocity.z));
         }
     }
 
     public static void toggle(){
         isFlyingEnable = !isFlyingEnable;
+        LOGGER.info("isFlyingEnable = {}", isFlyingEnable);
     }
 
     public static Text getButtonText(){
