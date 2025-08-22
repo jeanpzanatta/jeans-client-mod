@@ -9,8 +9,6 @@ import static com.mojang.text2speech.Narrator.LOGGER;
 public class Flying {
     private static boolean isFlyingEnable = true;
     private static int counter = 0;
-    private static double FALL_SPEED = -0.04; // Velocidade minima para o server resetar o contador.
-    private static int FLYING_TICKS = 40; // Nos meus testes o servidor aceita até 80 Ticks, usando 40 pra garantir.
 
     public static void tick(MinecraftClient client){
         if (client.player == null) return;
@@ -28,10 +26,14 @@ public class Flying {
     private static void spoofTinyFall(MinecraftClient client) {
         var player = client.player;
         if (player == null || !player.getAbilities().flying) return; // só quando realmente voando
+        // Nos meus testes o servidor aceita até 80 Ticks, usando 40 pra garantir.
+        int FLYING_TICKS = 40;
         if (++counter >= FLYING_TICKS) {
             LOGGER.info("Está chamando a queda");
             counter = 0;
             final Vec3d velocity = player.getVelocity();
+            // Velocidade minima para o server resetar o contador.
+            double FALL_SPEED = -0.04;
             player.setVelocity(new Vec3d(velocity.x, FALL_SPEED - velocity.y, velocity.z));
         }
     }
