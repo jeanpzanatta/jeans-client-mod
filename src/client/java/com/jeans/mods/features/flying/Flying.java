@@ -29,7 +29,6 @@ public class Flying {
         // Nos meus testes o servidor aceita até 80 Ticks, usando 40 pra garantir.
         int FLYING_TICKS = 40;
         if (++counter >= FLYING_TICKS) {
-            LOGGER.info("Está chamando a queda");
             counter = 0;
             final Vec3d velocity = player.getVelocity();
             // Velocidade minima para o server resetar o contador.
@@ -40,7 +39,6 @@ public class Flying {
 
     public static void toggle(){
         isFlyingEnable = !isFlyingEnable;
-        LOGGER.info("isFlyingEnable = {}", isFlyingEnable);
     }
 
     public static Text getButtonText(){

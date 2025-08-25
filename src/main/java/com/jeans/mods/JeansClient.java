@@ -20,6 +20,7 @@ public class JeansClient implements ModInitializer {
 		// Proceed with mild caution.
 		LOGGER.info("Modificações do cliente de Jean foram iniciadas.");
 		LOGGER.info("\uD83C\uDFA3 - Mod de pesca automática iniciado! ");
+		LOGGER.info("\uD83E\uDEBD - Mod de voo iniciado! ");
 	}
 
 
